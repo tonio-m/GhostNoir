@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
     Vector3 velocity;
-    public float jumpHeight = 3f;
+    public float jumpHeight = 6f;
     public float gravity = -9.8f;
     public float groundDistance = 0.4f;
 
@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        Debug.Log(string.Format("velocity: {0}", velocity.y));
         controller.Move(velocity * Time.deltaTime);
     }
 

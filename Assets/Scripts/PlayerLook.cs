@@ -11,8 +11,8 @@ public class PlayerLook : MonoBehaviour
     float xRotation = 0f;
     public float mouseSensitivity = 100f;
 
-    int cameraCounter = 0;
-    public Camera[] alternativeCameras;
+    public GameObject alternativeCamera;
+    bool isUsingAlternativeCamera = false;
 
     void Start()
     {
@@ -24,8 +24,9 @@ public class PlayerLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.C)) {
-            alternativeCameras[0].gameObject.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.C)) { 
+            alternativeCamera.SetActive(!isUsingAlternativeCamera);
+            isUsingAlternativeCamera = !isUsingAlternativeCamera;
         }
 
         xRotation -= mouseY;
